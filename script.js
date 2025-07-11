@@ -1,6 +1,28 @@
 const container = document.getElementById('container');
 let size = prompt("Please Enter the size of the grid");
+const resetButton = document.getElementById('newGrid');
 
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+resetButton.addEventListener('click', () => {
+    let newSize = prompt("Enter new grid size (max 100):");
+
+    if (newSize === null) return;
+
+    newSize = parseInt(newSize);
+
+    if (isNaN(newSize) || newSize <= 0 || newSize > 100) {
+        alert("Invalid size. Please enter a number between 1 and 100.");
+        return;
+    }
+
+    createGrid(newSize);
+});
 function createGrid(size) {
     container.innerHTML = '';
     container.style.width = `${size * 40}px`;
@@ -8,8 +30,11 @@ function createGrid(size) {
         const square = document.createElement('div');
 
         square.classList.add('square');
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = getRandomColor();
+        });
+
         container.appendChild(square);
     }
 }
-
 createGrid(size);
