@@ -13,31 +13,43 @@ body {
     justify-content: center;
 }
 
+.card {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
 .square {
     border: 1px solid black;
     flex: 1 0 auto;
     width: 40px;
     height: 40px;
     box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
-#newGrid {
+.buttons {
+    text-align: center;
+    margin: 20px;
+    background: linear-gradient(to right, lightgrey);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
+    margin: 5px;
+    background-color: pink;
+    border: 2px solid #333;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    font-weight: bolder;
 }
 
-#newGrid:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-}
-
-#newGrid:active {
-    background-color: #3e8e41;
-    transform: scale(0.98);
+button:hover {
+    background-color: #ddd;
 }

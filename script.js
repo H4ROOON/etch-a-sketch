@@ -2,6 +2,26 @@ const container = document.getElementById('container');
 let size = prompt("Please Enter the size of the grid");
 const resetButton = document.getElementById('newGrid');
 
+const blackBtn = document.getElementById('blackMode');
+const rainbowBtn = document.getElementById('rainbowMode');
+const clearButton = document.getElementById('clearGrid');
+
+blackBtn.addEventListener('click', () => {
+    currentMode = 'black';
+});
+
+rainbowBtn.addEventListener('click', () => {
+    currentMode = 'rainbow';
+});
+
+clearButton.addEventListener('click', () => {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+        square.style.backgroundColor = 'white';
+    });
+});
+
+let currentMode = 'black';
 function getRandomColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
@@ -31,7 +51,11 @@ function createGrid(size) {
 
         square.classList.add('square');
         square.addEventListener('mouseenter', () => {
-            square.style.backgroundColor = getRandomColor();
+            if (currentMode === 'black') {
+                square.style.backgroundColor = 'black';
+            } else if (currentMode === 'rainbow') {
+                square.style.backgroundColor = getRandomColor();
+            }
         });
 
         container.appendChild(square);
